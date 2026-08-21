@@ -7,7 +7,7 @@ int * ptr=NULL;
 void push (int[]  ,int*);
 void pop(int[],int*);
 void peek(int[] ,int*);
-void display(int[],int*);
+void display(int[],int);
 int main()
 {
     int ch;
@@ -22,8 +22,14 @@ int main()
         break;
         case 2:
         pop(stack,&top);
+        break; 
+        case 3:
+        peek(stack,&top);
         break;
-    }
+        case 4:
+        display(stack,top);
+        break;
+        }
   }while(ch<=4);
   return 0;
 }
@@ -54,8 +60,34 @@ void pop(int stack[],int *ptr)
     else
     {
     x=stack[*ptr];
-    printf("popped value %d",x);
+    printf("popped value %d \n",x);
     (*ptr)--;
     }
 }
-
+void peek(int stack[],int *ptr)
+{
+    if(*ptr==-1)
+    {
+        printf("stack underflow");
+        
+    }
+    else
+    {
+        printf("peek value %d \n",stack[*ptr]);
+    }
+}
+void display(int stack[], int ptr)
+{
+    if(ptr == -1)
+    {
+        printf("stack underflow");
+    }
+    else
+    {
+        while(ptr >= 0)
+        {
+            printf("%d\n", stack[ptr]);
+            (ptr)--;
+        }
+    }
+}
