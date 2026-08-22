@@ -1,0 +1,58 @@
+#include<stdio.h>
+#include<string.h>
+#define max 100
+char stack[max];
+int top=-1;
+void push(char);
+char pop();
+int main()
+{
+    int flag=1;
+    char s[100];
+    int i=0,x;
+    printf("enter string");
+    scanf("%s",s);
+    while(s[i]!='\0')
+    {
+    if(s[i]=='('||s[i]=='{'||s[i]=='[')
+    {
+        push(s[i]);
+    }else 
+    {
+        x=pop();
+        if(s[i]==')'&& x=='('|| s[i]==']'&& x=='[' || s[i]=='}' && x=='{')
+        {
+            flag=1;
+        }
+        else
+        {
+            flag=0;
+        }
+    }
+    if(flag==0)
+    {
+    printf("not balanced");
+    break;
+    }
+ i++;   
+}
+if(flag==1)
+    {
+        printf(" balanced");
+    }
+    return 0;
+    
+}
+void push (char ch)
+{
+    top++;
+    stack[top]=ch;
+    
+}
+char pop()
+{ 
+    char r;
+  r=stack[top];
+    top--;
+    return r;
+}
